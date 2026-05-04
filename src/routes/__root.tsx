@@ -29,14 +29,13 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Nexus Digital Studio — Premier Web Design & Development Agency in Houston, TX" },
+      { name: "description", content: "Houston's elite digital agency specializing in luxury web design, full-stack development, SEO, branding, and digital strategy." },
+      { name: "author", content: "Nexus Digital Studio" },
+      { property: "og:title", content: "Nexus Digital Studio — Houston's Premier Digital Agency" },
+      { property: "og:description", content: "We craft digital masterpieces. Web design, app development, SEO, branding & more." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       {

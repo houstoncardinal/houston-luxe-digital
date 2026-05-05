@@ -3,11 +3,11 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
 const navLinks = [
-  { to: "/", label: "Home" },
-  { to: "/services", label: "Services" },
-  { to: "/about", label: "About" },
-  { to: "/work", label: "Work" },
-  { to: "/contact", label: "Contact" },
+  { to: "/", label: "Dashboard", icon: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/></svg> },
+  { to: "/services", label: "Services", icon: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg> },
+  { to: "/work", label: "Portfolio", icon: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> },
+  { to: "/about", label: "About", icon: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg> },
+  { to: "/contact", label: "Contact", icon: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> },
 ] as const;
 
 export function Header() {
@@ -28,36 +28,45 @@ export function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "glass glass-border py-3" : "py-5"
+        scrolled ? "glass glass-border py-2" : "py-3 bg-background/50 backdrop-blur-sm"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8">
-        <Link to="/" className="flex items-center gap-2">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-gold">
-            <span className="text-lg font-bold text-primary-foreground">N</span>
+        <Link to="/" className="flex items-center gap-2.5">
+          <div className="relative flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-gold">
+            <span className="text-sm font-bold text-primary-foreground">N</span>
+            <div className="absolute -inset-0.5 rounded-lg bg-gradient-gold opacity-30 blur-sm" />
           </div>
-          <span className="text-xl font-bold tracking-tight text-foreground">
-            NEXUS<span className="text-gold">.</span>
-          </span>
+          <div className="flex flex-col">
+            <span className="text-sm font-bold tracking-tight text-foreground leading-none">
+              NEXUS<span className="text-gold">.</span>
+            </span>
+            <span className="text-[10px] font-medium tracking-widest text-muted-foreground uppercase">Digital Studio</span>
+          </div>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-1 rounded-xl border border-border/50 bg-card/50 p-1 md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.to}
               to={link.to}
-              className="text-sm font-medium text-muted-foreground transition-colors duration-300 hover:text-gold"
-              activeProps={{ className: "!text-gold" }}
+              className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-xs font-medium text-muted-foreground transition-all duration-200 hover:text-foreground hover:bg-muted/50"
+              activeProps={{ className: "!text-gold !bg-gold/10" }}
               activeOptions={{ exact: true }}
             >
+              {link.icon}
               {link.label}
             </Link>
           ))}
         </nav>
 
-        <div className="hidden md:block">
-          <Button variant="gold" size="lg" asChild>
-            <Link to="/contact">Start a Project</Link>
+        <div className="hidden items-center gap-3 md:flex">
+          <div className="flex items-center gap-2 rounded-lg border border-border/50 bg-card/50 px-3 py-1.5">
+            <span className="h-2 w-2 rounded-full bg-emerald animate-pulse" />
+            <span className="text-[10px] font-medium text-muted-foreground">Houston, TX</span>
+          </div>
+          <Button variant="gold" size="sm" asChild>
+            <Link to="/contact">Start Project</Link>
           </Button>
         </div>
 
@@ -73,20 +82,21 @@ export function Header() {
       </div>
 
       {mobileOpen && (
-        <div className="glass glass-border mx-4 mt-3 rounded-2xl p-6 md:hidden">
-          <nav className="flex flex-col gap-4">
+        <div className="glass glass-border mx-4 mt-3 rounded-2xl p-4 md:hidden">
+          <nav className="flex flex-col gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
-                className="text-lg font-medium text-muted-foreground transition-colors hover:text-gold"
-                activeProps={{ className: "!text-gold" }}
+                className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:bg-muted/30"
+                activeProps={{ className: "!text-gold !bg-gold/10" }}
                 activeOptions={{ exact: true }}
               >
+                {link.icon}
                 {link.label}
               </Link>
             ))}
-            <Button variant="gold" size="lg" className="mt-4" asChild>
+            <Button variant="gold" size="lg" className="mt-3" asChild>
               <Link to="/contact">Start a Project</Link>
             </Button>
           </nav>

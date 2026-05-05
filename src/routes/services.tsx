@@ -1,97 +1,149 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import { ServiceCard } from "@/components/ServiceCard";
-import { Link } from "@tanstack/react-router";
+import { PackageBuilder } from "@/components/PackageBuilder";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Our Services — Nexus Digital Studio | Houston Web Design & Development" },
-      { name: "description", content: "Explore Nexus Digital Studio's full suite of premium services including web design, app development, SEO, branding, paid ads, and digital auditing in Houston TX." },
-      { property: "og:title", content: "Our Services — Nexus Digital Studio" },
-      { property: "og:description", content: "Premium web design, app development, SEO, branding, and digital strategy services in Houston, TX." },
+      { title: "Services & Custom Packages — Nexus Digital Studio | Houston TX" },
+      { name: "description", content: "Build your custom digital package. Web design, app development, SEO, branding, paid ads, and consulting services for Houston businesses. Bundle & save." },
+      { property: "og:title", content: "Services & Custom Packages — Nexus Digital Studio" },
+      { property: "og:description", content: "Custom digital packages for Houston businesses. Web design, app dev, SEO & more." },
     ],
   }),
   component: ServicesPage,
 });
 
-const allServices = [
+const detailedServices = [
   {
-    icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>,
     title: "Web Design & Development",
-    description: "From stunning landing pages to complex e-commerce platforms, we build pixel-perfect, high-performance websites that load in under 2 seconds and convert visitors at 3x the industry average. Every site is responsive, accessible, and optimized for search engines from day one.",
+    color: "gold",
+    description: "From stunning landing pages to complex e-commerce platforms. Every site loads in under 2 seconds with 3x industry-average conversion rates.",
+    features: ["Responsive Design", "Speed Optimization", "CMS Integration", "E-Commerce", "ADA Compliance", "Custom Animations"],
+    caseStudy: { client: "Meridian Ventures", result: "+340% qualified leads", timeline: "8 weeks" },
   },
   {
-    icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>,
     title: "Full-Stack App Development",
-    description: "Enterprise-grade mobile and web applications built with React, Node.js, and cloud-native architectures. We specialize in SaaS platforms, internal tools, customer portals, and mobile apps that handle millions of users with seamless reliability.",
+    color: "cyan",
+    description: "Enterprise-grade mobile and web applications built with React, Node.js, and cloud-native architectures handling millions of users.",
+    features: ["SaaS Platforms", "Mobile Apps", "API Development", "Real-Time Features", "Cloud Infrastructure", "DevOps"],
+    caseStudy: { client: "Vertex SaaS", result: "200K+ active users", timeline: "16 weeks" },
   },
   {
-    icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>,
     title: "Search Engine Optimization",
-    description: "Comprehensive SEO strategies covering technical optimization, content strategy, link building, and local SEO for Houston businesses. Our clients average 280% organic traffic growth within the first year with sustained ranking improvements.",
+    color: "emerald",
+    description: "Comprehensive SEO covering technical optimization, content strategy, and local SEO for Houston businesses. 280% average traffic growth.",
+    features: ["Technical SEO", "Local SEO", "Content Strategy", "Link Building", "Analytics", "Competitor Analysis"],
+    caseStudy: { client: "Pinnacle RE", result: "#1 for 50+ keywords", timeline: "6 months" },
   },
   {
-    icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg>,
-    title: "Branding & Packaging Design",
-    description: "Complete brand identity systems including logos, typography, color palettes, brand guidelines, and packaging design. We create brands that stand out in crowded markets and resonate deeply with target audiences across all touchpoints.",
+    title: "Branding & Packaging",
+    color: "violet",
+    description: "Complete brand identity systems including logos, typography, color palettes, brand guidelines, and packaging design.",
+    features: ["Logo Design", "Brand Guidelines", "Visual Identity", "Packaging", "Business Stationery", "Brand Strategy"],
+    caseStudy: { client: "Elevate Health", result: "$15M Series A raised", timeline: "6 weeks" },
   },
   {
-    icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>,
     title: "Consulting & Digital Auditing",
-    description: "In-depth digital presence audits, competitor analysis, and strategic consulting. We analyze every facet of your online presence — from UX and performance to content and conversion paths — and deliver actionable recommendations that drive growth.",
+    color: "rose",
+    description: "In-depth digital presence audits, competitor analysis, and strategic consulting with actionable growth recommendations.",
+    features: ["Digital Audit", "Competitor Analysis", "UX Review", "Performance Audit", "Growth Roadmap", "Strategic Planning"],
+    caseStudy: { client: "Gulf Coast Capital", result: "42% conversion lift", timeline: "3 weeks" },
   },
   {
-    icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>,
     title: "Paid Advertising & PPC",
-    description: "Data-driven paid media campaigns across Google Ads, Meta, LinkedIn, and programmatic networks. We optimize for ROAS with advanced audience targeting, creative testing, and full-funnel attribution to maximize every dollar of ad spend.",
+    color: "gold",
+    description: "Data-driven campaigns across Google Ads, Meta, LinkedIn with advanced targeting and full-funnel attribution.",
+    features: ["Google Ads", "Meta Ads", "LinkedIn Ads", "Retargeting", "Creative Testing", "ROI Analytics"],
+    caseStudy: { client: "Luxe Auto", result: "$8M attributed revenue", timeline: "6 months" },
   },
 ];
 
+const colorMap: Record<string, { bg: string; text: string; border: string }> = {
+  gold: { bg: "bg-gold/10", text: "text-gold", border: "border-gold/20" },
+  cyan: { bg: "bg-cyan/10", text: "text-cyan", border: "border-cyan/20" },
+  emerald: { bg: "bg-emerald/10", text: "text-emerald", border: "border-emerald/20" },
+  violet: { bg: "bg-violet/10", text: "text-violet", border: "border-violet/20" },
+  rose: { bg: "bg-rose/10", text: "text-rose", border: "border-rose/20" },
+};
+
 function ServicesPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background dot-grid">
       <Header />
 
-      <section className="pb-16 pt-32 lg:pt-40">
+      <section className="pb-12 pt-24 lg:pt-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <AnimatedSection className="max-w-3xl">
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Our Services</span>
-            <h1 className="mt-4 text-5xl font-bold text-foreground md:text-6xl lg:text-7xl">
-              Solutions That <span className="text-gradient-gold">Transform</span>
+            <div className="inline-flex items-center gap-2 rounded-full border border-gold/20 bg-gold/5 px-4 py-1.5">
+              <span className="h-2 w-2 rounded-full bg-gold animate-pulse" />
+              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-gold">Full-Service Agency</span>
+            </div>
+            <h1 className="mt-6 text-4xl font-bold text-foreground md:text-5xl lg:text-6xl">
+              Every Solution Your Business <span className="text-gradient-gold">Needs</span>
             </h1>
-            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              We offer a comprehensive suite of digital services designed to help ambitious brands dominate their markets and achieve extraordinary growth.
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+              Fully customizable services with transparent pricing. Build your own package or let us craft one for you.
             </p>
           </AnimatedSection>
         </div>
       </section>
 
-      <section className="pb-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {allServices.map((service, i) => (
-              <ServiceCard key={service.title} {...service} index={i} />
-            ))}
-          </div>
+      {/* Detailed Services */}
+      <section className="pb-16">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 space-y-6">
+          {detailedServices.map((svc, i) => {
+            const c = colorMap[svc.color] || colorMap.gold;
+            return (
+              <AnimatedSection key={svc.title} delay={i * 80}>
+                <div className="widget">
+                  <div className="grid gap-6 lg:grid-cols-3">
+                    <div className="lg:col-span-2">
+                      <h3 className={`text-xl font-bold ${c.text}`}>{svc.title}</h3>
+                      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{svc.description}</p>
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {svc.features.map((f) => (
+                          <span key={f} className={`rounded-lg border px-2.5 py-1 text-[10px] font-medium ${c.bg} ${c.text} ${c.border}`}>{f}</span>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="rounded-xl border border-border/30 bg-background/50 p-4">
+                      <span className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground">Case Study</span>
+                      <p className="mt-2 text-sm font-semibold text-foreground">{svc.caseStudy.client}</p>
+                      <p className={`mt-1 text-lg font-bold ${c.text}`}>{svc.caseStudy.result}</p>
+                      <p className="mt-1 text-[10px] text-muted-foreground">Timeline: {svc.caseStudy.timeline}</p>
+                    </div>
+                  </div>
+                </div>
+              </AnimatedSection>
+            );
+          })}
         </div>
       </section>
 
-      <section className="border-t border-border/50 bg-card/30 py-24">
-        <div className="mx-auto max-w-4xl px-6 text-center lg:px-8">
+      {/* Package Builder */}
+      <div className="border-t border-border/30">
+        <PackageBuilder />
+      </div>
+
+      {/* CTA */}
+      <section className="border-t border-border/30 py-20">
+        <div className="mx-auto max-w-4xl px-6 text-center">
           <AnimatedSection>
-            <h2 className="text-4xl font-bold text-foreground md:text-5xl">
-              Let's Discuss <span className="text-gradient-gold">Your Project</span>
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-              Every project begins with a conversation. Tell us about your vision and we'll show you how we can bring it to life.
-            </p>
-            <Button variant="gold" size="xl" className="mt-8" asChild>
-              <Link to="/contact">Start the Conversation</Link>
-            </Button>
+            <div className="widget p-10">
+              <h2 className="text-3xl font-bold text-foreground md:text-4xl">
+                Need Something <span className="text-gradient-gold">Unique?</span>
+              </h2>
+              <p className="mt-3 text-sm text-muted-foreground">
+                We specialize in custom solutions. Tell us what you need and we'll build the perfect package.
+              </p>
+              <Button variant="gold" size="xl" className="mt-6" asChild>
+                <Link to="/contact">Get a Custom Quote</Link>
+              </Button>
+            </div>
           </AnimatedSection>
         </div>
       </section>

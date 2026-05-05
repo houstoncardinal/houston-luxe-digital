@@ -2,15 +2,15 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import { StatsSection } from "@/components/StatsSection";
+import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Us — Nexus Digital Studio | Houston's Elite Digital Agency" },
-      { name: "description", content: "Meet the team behind Houston's most sought-after digital agency. 12+ years of crafting award-winning digital experiences for visionary brands." },
-      { property: "og:title", content: "About Us — Nexus Digital Studio" },
+      { title: "About Nexus Digital Studio — Houston's Elite Digital Agency" },
+      { name: "description", content: "Meet the team behind Houston's most sought-after digital agency. 12+ years crafting award-winning digital experiences for visionary brands." },
+      { property: "og:title", content: "About Nexus Digital Studio" },
       { property: "og:description", content: "Meet the team behind Houston's most sought-after digital agency." },
     ],
   }),
@@ -18,54 +18,94 @@ export const Route = createFileRoute("/about")({
 });
 
 const values = [
-  { title: "Obsessive Craft", desc: "Every pixel, every interaction, every line of code is meticulously refined until it exceeds expectations." },
-  { title: "Strategic Thinking", desc: "Design without strategy is decoration. We ensure every creative decision drives measurable business outcomes." },
-  { title: "Relentless Innovation", desc: "We stay ahead of industry trends and emerging technologies to deliver future-proof solutions." },
-  { title: "Transparent Partnership", desc: "We believe in radical transparency. You're never in the dark about timelines, budgets, or decisions." },
+  { title: "Obsessive Craft", desc: "Every pixel, every interaction, every line of code refined until it exceeds expectations.", icon: "✨", color: "gold" },
+  { title: "Strategic Thinking", desc: "Design without strategy is decoration. Every creative decision drives business outcomes.", icon: "🎯", color: "cyan" },
+  { title: "Relentless Innovation", desc: "We stay ahead of trends and emerging technologies for future-proof solutions.", icon: "🚀", color: "violet" },
+  { title: "Transparent Partnership", desc: "Radical transparency. You're never in the dark about timelines, budgets, or decisions.", icon: "🤝", color: "emerald" },
 ];
 
 const team = [
-  { name: "David Chen", role: "Founder & Creative Director", bio: "15 years shaping digital experiences for brands like Nike, Tesla, and Deloitte." },
-  { name: "Maria Santos", role: "Head of Engineering", bio: "Ex-Google engineer specializing in scalable architectures and performance optimization." },
-  { name: "James Williams", role: "Strategy Director", bio: "Former McKinsey consultant bringing Fortune 500 strategic thinking to every project." },
-  { name: "Aisha Patel", role: "Design Lead", bio: "Award-winning designer with work featured in Awwwards, CSS Design Awards, and FWA." },
+  { name: "David Chen", role: "Founder & Creative Director", bio: "15 years shaping digital experiences for brands like Nike, Tesla, and Deloitte.", color: "gold" },
+  { name: "Maria Santos", role: "Head of Engineering", bio: "Ex-Google engineer specializing in scalable architectures and performance.", color: "cyan" },
+  { name: "James Williams", role: "Strategy Director", bio: "Former McKinsey consultant bringing Fortune 500 strategic thinking.", color: "violet" },
+  { name: "Aisha Patel", role: "Design Lead", bio: "Award-winning designer featured in Awwwards, CSS Design Awards, and FWA.", color: "emerald" },
 ];
+
+const stats = [
+  { value: 200, suffix: "+", label: "Projects", color: "gold" },
+  { value: 12, suffix: "+", label: "Years", color: "cyan" },
+  { value: 50, prefix: "$", suffix: "M+", label: "Revenue Generated", color: "emerald" },
+  { value: 98, suffix: "%", label: "Retention", color: "violet" },
+];
+
+const colorMap: Record<string, string> = {
+  gold: "text-gold",
+  cyan: "text-cyan",
+  violet: "text-violet",
+  emerald: "text-emerald",
+  rose: "text-rose",
+};
 
 function AboutPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background dot-grid">
       <Header />
 
-      <section className="pb-16 pt-32 lg:pt-40">
+      <section className="pb-12 pt-24 lg:pt-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <AnimatedSection className="max-w-3xl">
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">About Nexus</span>
-            <h1 className="mt-4 text-5xl font-bold text-foreground md:text-6xl lg:text-7xl">
-              Building the <span className="text-gradient-gold">Future of Digital</span>
+            <div className="inline-flex items-center gap-2 rounded-full border border-gold/20 bg-gold/5 px-4 py-1.5">
+              <span className="h-2 w-2 rounded-full bg-gold animate-pulse" />
+              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-gold">About Nexus</span>
+            </div>
+            <h1 className="mt-6 text-4xl font-bold text-foreground md:text-5xl lg:text-6xl">
+              Building the Future of <span className="text-gradient-gold">Digital</span>
             </h1>
-            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              Founded in Houston, Texas, Nexus Digital Studio is a collective of designers, engineers, and strategists who believe that exceptional digital experiences are the cornerstone of modern business success.
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+              Founded in Houston, Texas — we're a collective of designers, engineers, and strategists who believe exceptional digital experiences are the cornerstone of modern business success.
             </p>
           </AnimatedSection>
         </div>
       </section>
 
-      <StatsSection />
-
-      <section className="py-24">
+      {/* Stats */}
+      <section className="py-8">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <AnimatedSection>
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Our Values</span>
-            <h2 className="mt-4 text-4xl font-bold text-foreground md:text-5xl">
+          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+            {stats.map((s, i) => (
+              <AnimatedSection key={s.label} delay={i * 100}>
+                <div className="widget text-center">
+                  <div className={`text-3xl font-bold ${colorMap[s.color]}`}>
+                    <AnimatedCounter end={s.value} prefix={s.prefix} suffix={s.suffix} />
+                  </div>
+                  <p className="mt-1 text-xs text-muted-foreground">{s.label}</p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Values */}
+      <section className="py-16">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <AnimatedSection className="mb-10">
+            <span className="metric-badge bg-gold/10 text-gold border border-gold/20">Values</span>
+            <h2 className="mt-4 text-3xl font-bold text-foreground md:text-4xl">
               What <span className="text-gradient-gold">Drives Us</span>
             </h2>
           </AnimatedSection>
-          <div className="mt-12 grid gap-8 md:grid-cols-2">
+          <div className="grid gap-4 md:grid-cols-2">
             {values.map((v, i) => (
-              <AnimatedSection key={v.title} delay={i * 100}>
-                <div className="rounded-2xl border border-border/50 bg-card p-8 hover-gold-glow transition-all duration-500">
-                  <h3 className="text-xl font-semibold text-foreground">{v.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{v.desc}</p>
+              <AnimatedSection key={v.title} delay={i * 80}>
+                <div className="widget group">
+                  <div className="flex items-start gap-4">
+                    <span className="text-2xl">{v.icon}</span>
+                    <div>
+                      <h3 className={`text-base font-semibold ${colorMap[v.color]}`}>{v.title}</h3>
+                      <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{v.desc}</p>
+                    </div>
+                  </div>
                 </div>
               </AnimatedSection>
             ))}
@@ -73,24 +113,25 @@ function AboutPage() {
         </div>
       </section>
 
-      <section className="border-t border-border/50 bg-card/30 py-24">
+      {/* Team */}
+      <section className="border-t border-border/30 py-16">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <AnimatedSection>
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Leadership</span>
-            <h2 className="mt-4 text-4xl font-bold text-foreground md:text-5xl">
-              Meet the <span className="text-gradient-gold">Team</span>
+          <AnimatedSection className="mb-10">
+            <span className="metric-badge bg-gold/10 text-gold border border-gold/20">Team</span>
+            <h2 className="mt-4 text-3xl font-bold text-foreground md:text-4xl">
+              Meet the <span className="text-gradient-gold">Leadership</span>
             </h2>
           </AnimatedSection>
-          <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {team.map((t, i) => (
-              <AnimatedSection key={t.name} delay={i * 100}>
-                <div className="text-center">
-                  <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-gradient-gold text-3xl font-bold text-primary-foreground">
+              <AnimatedSection key={t.name} delay={i * 80}>
+                <div className="widget text-center group">
+                  <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-gold text-xl font-bold text-primary-foreground">
                     {t.name.split(" ").map(n => n[0]).join("")}
                   </div>
-                  <h3 className="mt-4 text-lg font-semibold text-foreground">{t.name}</h3>
-                  <p className="text-sm font-medium text-gold">{t.role}</p>
-                  <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{t.bio}</p>
+                  <h3 className="mt-4 text-sm font-semibold text-foreground">{t.name}</h3>
+                  <p className={`text-xs font-medium ${colorMap[t.color]}`}>{t.role}</p>
+                  <p className="mt-2 text-[10px] leading-relaxed text-muted-foreground">{t.bio}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -98,18 +139,19 @@ function AboutPage() {
         </div>
       </section>
 
-      <section className="py-24">
-        <div className="mx-auto max-w-4xl px-6 text-center lg:px-8">
+      {/* CTA */}
+      <section className="py-16">
+        <div className="mx-auto max-w-4xl px-6 text-center">
           <AnimatedSection>
-            <h2 className="text-4xl font-bold text-foreground md:text-5xl">
-              Join Us on the <span className="text-gradient-gold">Journey</span>
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-              We're always looking for visionary brands ready to make an impact.
-            </p>
-            <Button variant="gold" size="xl" className="mt-8" asChild>
-              <Link to="/contact">Work With Us</Link>
-            </Button>
+            <div className="widget p-10">
+              <h2 className="text-3xl font-bold text-foreground md:text-4xl">
+                Let's Build <span className="text-gradient-gold">Together</span>
+              </h2>
+              <p className="mt-3 text-sm text-muted-foreground">Ready to transform your Houston business?</p>
+              <Button variant="gold" size="xl" className="mt-6" asChild>
+                <Link to="/contact">Work With Us</Link>
+              </Button>
+            </div>
           </AnimatedSection>
         </div>
       </section>

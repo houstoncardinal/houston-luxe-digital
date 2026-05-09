@@ -148,10 +148,19 @@ function HomePage() {
       <Header />
 
       {/* Hero */}
-      <section className="relative flex min-h-[88vh] items-center overflow-hidden pt-20">
+      <section className="relative flex min-h-[92vh] items-center overflow-hidden pt-20">
+        {/* Houston skyline backdrop */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-gold/5 blur-[120px]" />
-          <div className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-emerald/5 blur-[100px]" />
+          <img
+            src={houstonSkyline}
+            alt="Houston Texas downtown skyline at golden hour"
+            width={1920}
+            height={1080}
+            className="absolute inset-0 h-full w-full object-cover opacity-60"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background" />
+          <div className="absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-gold/15 blur-[120px]" />
+          <div className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-emerald/10 blur-[100px]" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-5xl px-6 text-center lg:px-8 w-full">

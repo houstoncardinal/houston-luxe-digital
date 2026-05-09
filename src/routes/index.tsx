@@ -449,8 +449,10 @@ function HomePage() {
       {/* Final CTA */}
       <section className="relative overflow-hidden py-20 lg:py-28">
         <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/3 h-64 w-64 rounded-full bg-gold/5 blur-[100px]" />
-          <div className="absolute bottom-0 right-1/3 h-64 w-64 rounded-full bg-emerald/5 blur-[100px]" />
+          <img src={houstonSkyline} alt="" aria-hidden="true" loading="lazy" width={1920} height={1080} className="absolute inset-0 h-full w-full object-cover opacity-40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-background/70 to-background" />
+          <div className="absolute top-0 left-1/3 h-64 w-64 rounded-full bg-gold/10 blur-[100px]" />
+          <div className="absolute bottom-0 right-1/3 h-64 w-64 rounded-full bg-emerald/10 blur-[100px]" />
         </div>
         <div className="relative mx-auto max-w-4xl px-6 text-center lg:px-8">
           <AnimatedSection>

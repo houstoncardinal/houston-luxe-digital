@@ -227,7 +227,81 @@ function HomePage() {
         </div>
       </section>
 
-      {/* What We Do — Three Pillars */}
+      {/* Built in Houston — imagery band */}
+      <section className="py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid gap-8 lg:grid-cols-2 items-center">
+            <AnimatedSection>
+              <span className="metric-badge bg-gold/10 text-gold border border-gold/20">Built in Houston</span>
+              <h2 className="mt-4 text-4xl font-bold text-foreground md:text-5xl">
+                Proudly born on <span className="text-gradient-gold">Post Oak Boulevard.</span>
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-muted-foreground">
+                We're not a remote agency pretending to know your market. Our team works from the Galleria, meets clients at Post Oak Hotel, and ships projects for Houston businesses across energy, healthcare, real estate, and tech.
+              </p>
+              <ul className="mt-6 space-y-3">
+                {[
+                  "Local team. On-site meetings. Same-day response.",
+                  "Deep network across Houston's enterprise community.",
+                  "12 years building for Texas businesses.",
+                ].map((b) => (
+                  <li key={b} className="flex items-start gap-3 text-sm text-foreground/90">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="mt-0.5 shrink-0 text-gold"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Button variant="gold" size="lg" asChild>
+                  <Link to="/about">Meet the Team</Link>
+                </Button>
+                <Button variant="gold-outline" size="lg" asChild>
+                  <Link to="/work">View Houston Work</Link>
+                </Button>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection delay={120}>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="relative overflow-hidden rounded-2xl shadow-gold-sm row-span-2">
+                  <img
+                    src={houstonAerial}
+                    alt="Aerial view of Houston Texas downtown at sunrise"
+                    width={1600}
+                    height={1000}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-background/80 to-transparent">
+                    <span className="text-[10px] font-semibold uppercase tracking-widest text-gold">Downtown Houston</span>
+                    <p className="text-sm font-semibold text-foreground">Where ambition meets execution.</p>
+                  </div>
+                </div>
+                <div className="relative overflow-hidden rounded-2xl shadow-gold-sm">
+                  <img
+                    src={houstonStreet}
+                    alt="Houston Texas modern glass office buildings on a sunlit street"
+                    width={1400}
+                    height={900}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                </div>
+                <div className="widget flex flex-col justify-center">
+                  <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">Headquartered at</span>
+                  <p className="mt-1 text-sm font-semibold text-foreground">1200 Post Oak Blvd</p>
+                  <p className="text-sm text-muted-foreground">Suite 800, Houston TX 77056</p>
+                  <div className="mt-3 flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-emerald animate-pulse" />
+                    <span className="text-[10px] font-medium text-emerald">Open & taking new clients</span>
+                  </div>
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
       <section className="py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <AnimatedSection className="text-center mb-14">

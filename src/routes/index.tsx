@@ -4,6 +4,9 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
+import houstonSkyline from "@/assets/houston-skyline.jpg";
+import houstonAerial from "@/assets/houston-aerial.jpg";
+import houstonStreet from "@/assets/houston-street.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({

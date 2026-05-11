@@ -181,11 +181,13 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
-    letter-spacing: -0.025em;
+    font-weight: 700;
+    letter-spacing: -0.018em;
+    color: var(--foreground);
   }
 
   ::selection {
-    background-color: oklch(0.62 0.13 60 / 25%);
+    background-color: oklch(0.52 0.21 27 / 22%);
     color: var(--color-foreground);
   }
 

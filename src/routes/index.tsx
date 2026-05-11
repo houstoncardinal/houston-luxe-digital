@@ -217,62 +217,111 @@ function HomePage() {
     <div className="min-h-screen bg-background dot-grid">
       <Header />
 
-      {/* Hero */}
-      <section className="relative flex min-h-[92vh] items-center overflow-hidden pt-20">
+      {/* Hero — Editorial masthead */}
+      <section className="relative overflow-hidden border-b border-border/70 bg-background pt-28 pb-20 lg:pt-36 lg:pb-28">
         <div className="absolute inset-0 overflow-hidden">
           <img
             src={houstonSkyline}
             alt="Houston Texas downtown skyline at golden hour"
             width={1920}
             height={1080}
-            className="absolute inset-0 h-full w-full object-cover opacity-60"
+            className="absolute inset-0 h-full w-full object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background" />
-          <div className="absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-gold/15 blur-[120px]" />
-          <div className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-emerald/10 blur-[100px]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/85 to-background" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-5xl px-6 text-center lg:px-8 w-full">
-          <div className="animate-slide-up flex justify-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-gold/20 bg-gold/5 px-4 py-1.5">
-              <span className="h-2 w-2 rounded-full bg-gold animate-pulse" />
-              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-gold">
-                Houston, TX · #1 Web & App Agency
-              </span>
-            </div>
+        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+          {/* Masthead bar */}
+          <div className="mb-10 flex items-center justify-between border-y border-foreground/15 py-2.5 text-[10px] font-semibold uppercase tracking-[0.28em] text-muted-foreground">
+            <span>Vol. XII · No. 47</span>
+            <span className="hidden md:inline">The Houston Digital Quarterly</span>
+            <span>Monday, May 11, 2026</span>
           </div>
 
-          <h1 className="animate-slide-up-delayed mt-8 text-5xl font-bold leading-[1.05] tracking-tight text-foreground md:text-6xl lg:text-7xl" style={{ opacity: 0 }}>
-            Houston's premier <span className="text-gradient-gold">web & app</span><br />
-            development agency.
-          </h1>
+          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-8">
+              <div className="animate-slide-up editorial-eyebrow">
+                Cover Story · Houston, Texas
+              </div>
 
-          <p className="animate-slide-up-delayed-2 mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg" style={{ opacity: 0 }}>
-            We design, build, and grow digital products for Houston's most ambitious businesses — from Galleria boutiques to Energy Corridor enterprises to Medical Center innovators.
-          </p>
+              <h1
+                className="animate-slide-up-delayed editorial-headline mt-6 text-5xl text-foreground md:text-6xl lg:text-7xl xl:text-[5.5rem]"
+                style={{ opacity: 0 }}
+              >
+                Building the digital <em>infrastructure</em> behind Houston's most ambitious companies.
+              </h1>
 
-          <div className="animate-slide-up-delayed-2 mt-10 flex flex-wrap items-center justify-center gap-3" style={{ opacity: 0 }}>
-            <Button variant="gold" size="xl" asChild>
-              <Link to="/contact">Get a Free Strategy Call</Link>
-            </Button>
-            <Button variant="gold-outline" size="xl" asChild>
-              <Link to="/services">See Our Services</Link>
-            </Button>
+              <div
+                className="animate-slide-up-delayed-2 mt-10 max-w-2xl border-l-2 border-primary pl-6"
+                style={{ opacity: 0 }}
+              >
+                <p className="dropcap text-lg leading-relaxed text-foreground/85 md:text-xl">
+                  From Galleria boutiques and Energy Corridor enterprises to Texas Medical Center innovators, Nexus designs, engineers, and grows the websites, applications, and brands that define modern Houston business — with the discipline of an editorial newsroom and the rigor of a venture-backed product studio.
+                </p>
+                <p className="mt-5 text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground">
+                  — By the Editors of Nexus Studio
+                </p>
+              </div>
+
+              <div
+                className="animate-slide-up-delayed-2 mt-10 flex flex-wrap items-center gap-3"
+                style={{ opacity: 0 }}
+              >
+                <Button variant="gold" size="xl" asChild>
+                  <Link to="/contact">Request a Strategy Call</Link>
+                </Button>
+                <Button variant="gold-outline" size="xl" asChild>
+                  <Link to="/services">Read Our Services</Link>
+                </Button>
+              </div>
+            </div>
+
+            {/* Sidebar — "In This Issue" */}
+            <aside className="lg:col-span-4">
+              <div className="sticky top-28 rounded-sm border border-foreground/15 bg-card/70 p-7 backdrop-blur-sm">
+                <div className="editorial-divider mb-5">In This Issue</div>
+                <ul className="space-y-4">
+                  {[
+                    { n: "01", t: "The Houston Index", d: "200+ projects. $50M revenue attributed." },
+                    { n: "02", t: "Industry Dispatches", d: "Energy · Medical · Real Estate · Retail" },
+                    { n: "03", t: "Studio Doctrine", d: "How we build, measure, and ship." },
+                    { n: "04", t: "Client Letters", d: "Founders on partnering with Nexus." },
+                  ].map((item) => (
+                    <li key={item.n} className="group flex gap-4 border-b border-border/60 pb-4 last:border-0 last:pb-0">
+                      <span className="font-serif text-2xl font-bold text-primary leading-none">{item.n}</span>
+                      <div>
+                        <p className="font-serif text-base font-bold text-foreground">{item.t}</p>
+                        <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{item.d}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-6 flex items-center justify-between border-t border-border/60 pt-4 text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">
+                  <span>Founded 2013</span>
+                  <span className="text-primary">Houston · TX</span>
+                </div>
+              </div>
+            </aside>
           </div>
+        </div>
+      </section>
 
-          <div className="animate-slide-up-delayed-2 mt-10 flex flex-wrap items-center justify-center gap-6 text-muted-foreground" style={{ opacity: 0 }}>
-            <div className="flex items-center gap-1.5">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-gold"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <span className="text-xs font-medium">4.9/5 · 127 Houston reviews</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-emerald"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              <span className="text-xs font-medium">SOC 2 Certified</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-cyan"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-              <span className="text-xs font-medium">200+ Houston projects</span>
-            </div>
+      {/* Trust ticker */}
+      <section className="border-b border-border/60 bg-card/40">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-10 gap-y-3 px-6 py-5 text-muted-foreground lg:px-8">
+          <div className="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-primary"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <span className="text-[11px] font-semibold uppercase tracking-[0.18em]">4.9 / 5 · 127 Houston reviews</span>
+          </div>
+          <span className="hidden h-3 w-px bg-border md:inline-block" />
+          <div className="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-emerald"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span className="text-[11px] font-semibold uppercase tracking-[0.18em]">SOC 2 Certified</span>
+          </div>
+          <span className="hidden h-3 w-px bg-border md:inline-block" />
+          <div className="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-foreground"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            <span className="text-[11px] font-semibold uppercase tracking-[0.18em]">200+ Houston Projects · $50M Generated</span>
           </div>
         </div>
       </section>

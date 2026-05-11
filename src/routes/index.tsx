@@ -305,21 +305,23 @@ function HomePage() {
           </div>
         </div>
       </section>
-          </div>
 
-          <div className="animate-slide-up-delayed-2 mt-10 flex flex-wrap items-center justify-center gap-6 text-muted-foreground" style={{ opacity: 0 }}>
-            <div className="flex items-center gap-1.5">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-gold"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <span className="text-xs font-medium">4.9/5 · 127 Houston reviews</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-emerald"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              <span className="text-xs font-medium">SOC 2 Certified</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-cyan"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-              <span className="text-xs font-medium">200+ Houston projects</span>
-            </div>
+      {/* Trust ticker */}
+      <section className="border-b border-border/60 bg-card/40">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-10 gap-y-3 px-6 py-5 text-muted-foreground lg:px-8">
+          <div className="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-primary"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <span className="text-[11px] font-semibold uppercase tracking-[0.18em]">4.9 / 5 · 127 Houston reviews</span>
+          </div>
+          <span className="hidden h-3 w-px bg-border md:inline-block" />
+          <div className="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-emerald"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span className="text-[11px] font-semibold uppercase tracking-[0.18em]">SOC 2 Certified</span>
+          </div>
+          <span className="hidden h-3 w-px bg-border md:inline-block" />
+          <div className="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-foreground"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            <span className="text-[11px] font-semibold uppercase tracking-[0.18em]">200+ Houston Projects · $50M Generated</span>
           </div>
         </div>
       </section>

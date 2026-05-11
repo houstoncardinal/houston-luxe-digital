@@ -1,4 +1,4 @@
-import { createFileRoute, useServerFn } from "@tanstack/react-start";
+import { useServerFn } from "@tanstack/react-start";
 import { createFileRoute as createRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Header } from "@/components/Header";

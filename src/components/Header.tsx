@@ -33,16 +33,17 @@ export function Header() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8">
-        <Link to="/" className="flex items-center gap-2.5">
-          <div className="relative flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-gold">
-            <span className="text-sm font-bold text-primary-foreground">N</span>
-            <div className="absolute -inset-0.5 rounded-lg bg-gradient-gold opacity-30 blur-sm" />
+        <Link to="/" className="flex items-center gap-3">
+          <div className="flex h-9 w-9 items-center justify-center rounded-sm bg-foreground">
+            <span className="font-serif text-base font-bold leading-none text-background">N</span>
           </div>
-          <div className="flex flex-col">
-            <span className="text-sm font-bold tracking-tight text-foreground leading-none">
-              NEXUS<span className="text-gold">.</span>
+          <div className="flex flex-col leading-none">
+            <span className="font-serif text-xl font-bold tracking-tight text-foreground leading-none">
+              Nexus<span className="text-primary">.</span>
             </span>
-            <span className="text-[10px] font-medium tracking-widest text-muted-foreground uppercase">Enterprise Digital</span>
+            <span className="mt-0.5 text-[9px] font-semibold tracking-[0.25em] text-muted-foreground uppercase">
+              Houston · Est. 2013
+            </span>
           </div>
         </Link>
 
